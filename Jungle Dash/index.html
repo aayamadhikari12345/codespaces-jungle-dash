@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jungle Dash</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="game-shell">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Jungle Dash home"><span class="brand-mark">✦</span> Jungle Dash</a>
+      <div class="topbar-actions">
+        <span class="world-label">WORLD 01 <b>•</b> GREENWILD</span>
+        <button class="icon-button" id="soundButton" type="button" aria-label="Toggle sound">♫</button>
+        <button class="icon-button" id="restartButton" type="button" aria-label="Restart level">↻</button>
+      </div>
+    </header>
+
+    <section class="game-frame" aria-label="Jungle Dash game">
+      <div class="hud">
+        <div class="hud-group">
+          <div class="stat"><span class="stat-icon coin-icon">●</span><div><small>COINS</small><strong id="coinCount">0 / 12</strong></div></div>
+          <div class="stat"><span class="stat-icon score-icon">✦</span><div><small>SCORE</small><strong id="scoreCount">000000</strong></div></div>
+        </div>
+        <div class="hud-group hud-right">
+          <div class="stat"><span class="stat-icon heart-icon">♥</span><div><small>HEARTS</small><strong id="heartCount">3</strong></div></div>
+          <div class="stat timer-stat"><span class="stat-icon">◷</span><div><small>TIME</small><strong id="timer">00:00</strong></div></div>
+        </div>
+      </div>
+      <canvas id="gameCanvas" width="1280" height="720"></canvas>
+      <div class="canvas-hint"><span class="key">A</span><span class="key">D</span> move <span class="key space-key">SPACE</span> jump</div>
+      <div class="screen" id="startScreen">
+        <div class="screen-panel intro-panel">
+          <div class="eyebrow">A PLATFORM ADVENTURE</div>
+          <h1>Run wild.<br><em>Find wonder.</em></h1>
+          <p>Leap through the Greenwild, gather the jungle's light, and make it to the ancient chest.</p>
+          <button class="primary-button" id="playButton" type="button">Play game <span>→</span></button>
+          <div class="control-row"><span><kbd>A</kbd><kbd>D</kbd> run</span><span><kbd>SPACE</kbd> jump</span></div>
+        </div>
+      </div>
+      <div class="screen hidden" id="endScreen">
+        <div class="screen-panel result-panel">
+          <div class="result-badge" id="resultBadge">✦</div>
+          <div class="eyebrow" id="resultEyebrow">JUNGLE CLEARED</div>
+          <h2 id="resultTitle">You found the chest!</h2>
+          <p id="resultText">The Greenwild remembers a brave explorer.</p>
+          <div class="result-stats"><div><small>FINAL SCORE</small><strong id="finalScore">000000</strong></div><div><small>COINS FOUND</small><strong id="finalCoins">0 / 12</strong></div></div>
+          <button class="primary-button" id="againButton" type="button">Run it again <span>↻</span></button>
+        </div>
+      </div>
+    </section>
+    <footer class="footer"><span>JUNGLE DASH</span><span>EVERY LEAP COUNTS</span><span>v1.0 / GREENWILD</span></footer>
+  </main>
+  <script src="game.js"></script>
+</body>
+</html>
