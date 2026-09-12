@@ -24,7 +24,7 @@ function hurt() { if (player.invincible > 0) return; hearts--; player.invincible
 function update(dt) {
   elapsed += dt; player.invincible = Math.max(0, player.invincible - dt); player.boost = Math.max(0, player.boost - dt);
   const direction = (keys.ArrowRight || keys.d ? 1 : 0) - (keys.ArrowLeft || keys.a ? 1 : 0); const speed = player.boost ? 330 : 245; player.vx += (direction * speed - player.vx) * Math.min(1, dt * 10); if (!direction) player.vx *= .82;
-  if ((keys[' '] || keys.ArrowLeft || keys.w) && player.grounded) { player.vy = -590; player.grounded = false; keys[' '] = false; keys.ArrowUp = false; }
+  if ((keys[' '] || keys.ArrowUp|keys.w) && player.grounded) { player.vy = -590; player.grounded = false; keys[' '] = false; keys.ArrowUp = false; }
   player.vy += 1450 * dt; const oldY = player.y; player.x += player.vx * dt; player.y += player.vy * dt; player.x = Math.max(0, Math.min(world.width - player.w, player.x)); player.grounded = false;
   platforms.forEach(p => { if (player.x + player.w > p.x && player.x < p.x + p.w && oldY + player.h <= p.y && player.y + player.h >= p.y && player.vy >= 0) { player.y = p.y - player.h; player.vy = 0; player.grounded = true; } });
   coins.forEach(c => { if (!c.got && overlaps(player, { x: c.x - 13, y: c.y - 13, w: 26, h: 26 })) { c.got = true; collected++; score += 100; updateHud(); } });
